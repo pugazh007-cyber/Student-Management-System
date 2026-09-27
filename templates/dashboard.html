@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard | Student Management System{% endblock %}
+{% block content %}
+<div class="container">
+    <section class="hero">
+        <div>
+            <span class="eyebrow">OVERVIEW</span>
+            <h1>Welcome to Student Management System</h1>
+            <p>Manage student details, attendance and marks from one simple dashboard.</p>
+        </div>
+        <a class="button light-button" href="{% url 'add_student' %}">+ Add Student</a>
+    </section>
+
+    <div class="cards">
+        <div class="card">
+            <div class="card-icon">👨‍🎓</div>
+            <div>
+                <span class="card-label">Total Students</span>
+                <h2>{{ total_students }}</h2>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon">📅</div>
+            <div>
+                <span class="card-label">Attendance Records</span>
+                <h2>{{ total_attendance }}</h2>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <div>
+                <span class="card-label">Marks Records</span>
+                <h2>{{ total_marks }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <section class="quick-panel">
+        <div>
+            <h2>Quick Actions</h2>
+            <p>Choose a module to continue.</p>
+        </div>
+        <div class="quick-actions">
+            <a href="{% url 'student_list' %}">View Students <span>→</span></a>
+            <a href="{% url 'attendance' %}">Manage Attendance <span>→</span></a>
+            <a href="{% url 'marks' %}">Manage Marks <span>→</span></a>
+        </div>
+    </section>
+</div>
+{% endblock %}

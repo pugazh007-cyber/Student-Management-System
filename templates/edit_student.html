@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Edit Student | Student Management System{% endblock %}
+{% block content %}
+<div class="container narrow-container">
+    <div class="page-header form-page-header">
+        <div>
+            <span class="eyebrow dark">UPDATE RECORD</span>
+            <h1>Edit Student</h1>
+            <p>Update the required student information.</p>
+        </div>
+        <a class="back-link" href="{% url 'student_list' %}">← Back to Students</a>
+    </div>
+
+    <div class="form-box">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update Student</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

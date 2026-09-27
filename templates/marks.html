@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}Marks | Student Management System{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <div>
+            <span class="eyebrow dark">ACADEMICS</span>
+            <h1>Student Marks</h1>
+            <p>Add subject marks and view existing records.</p>
+        </div>
+    </div>
+
+    <div class="content-grid">
+        <div class="form-box compact-form">
+            <h2>Add Mark</h2>
+            <p class="section-note">Choose a student and enter the subject mark.</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Add Mark</button>
+            </form>
+        </div>
+
+        <div class="table-card">
+            <div class="table-title">
+                <div>
+                    <h2>Marks Records</h2>
+                    <p>Saved academic marks.</p>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <tr><th>Student</th><th>Subject</th><th>Mark</th></tr>
+                    {% for r in records %}
+                    <tr>
+                        <td class="student-name">{{ r.student.name }}</td>
+                        <td>{{ r.subject }}</td>
+                        <td><span class="mark-badge">{{ r.mark }}</span></td>
+                    </tr>
+                    {% empty %}
+                    <tr><td colspan="3" class="empty-state">No mark records.</td></tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

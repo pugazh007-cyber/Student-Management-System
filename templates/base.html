@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Student Management System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav class="topbar">
+        <a href="{% url 'dashboard' %}" class="brand">
+            <span class="brand-logo">SMS</span>
+            <span>
+                <strong>Student Management</strong>
+                <small>Django Portal</small>
+            </span>
+        </a>
+
+        <div class="nav-links">
+            <a class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}" href="{% url 'dashboard' %}">Dashboard</a>
+            <a class="{% if request.resolver_match.url_name == 'student_list' or request.resolver_match.url_name == 'add_student' or request.resolver_match.url_name == 'edit_student' %}active{% endif %}" href="{% url 'student_list' %}">Students</a>
+            <a class="{% if request.resolver_match.url_name == 'attendance' %}active{% endif %}" href="{% url 'attendance' %}">Attendance</a>
+            <a class="{% if request.resolver_match.url_name == 'marks' %}active{% endif %}" href="{% url 'marks' %}">Marks</a>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        Student Management System • Django Project
+    </footer>
+</body>
+</html>
